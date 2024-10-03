@@ -1,14 +1,14 @@
 import "../styles/globals.css";
 import Head from "next/head";
 
-import { StateContextProvider } from "../Context/index";
+import { StateProvider } from "../Context/index.js";
 
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <StateContextProvider>
+      <StateProvider>
         <Component {...pageProps} />
-      </StateContextProvider>
+      </StateProvider>
 
       <script src="js/vendor/modernizr-3.5.0.min.js"></script>
       <script src="js/vendor/jquery-1.12.4.min.js"></script>

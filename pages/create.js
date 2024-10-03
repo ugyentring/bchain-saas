@@ -1,7 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+
+import {
+  Header,
+  Footer,
+  UserProfile,
+  Profile,
+  ERC20,
+  Transfer,
+} from "../Components/index.js";
+import { useStateContext } from "../Context/index.js";
 
 const create = () => {
-  return <div>create</div>;
-};
+  const [active, setActive] = useState(false);
+  const [transfer, setTransfer] = useState(false);
 
-export default create;
+  const {
+    createERC20,
+    getAllERC20TokensListed,
+    getAllERC20Tokens,
+    getAllDonations,
+    balance,
+    fee,
+    mainBalance,
+    nativeToken,
+    address,
+    getUserERC20Tokens,
+    widthdrawFund,
+    donationFund,
+    transferNativeToken,
+    transferERC20,
+  } = useStateContext();
+};

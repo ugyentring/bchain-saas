@@ -34,8 +34,9 @@ const create = () => {
   return (
     <div>
       <Header />
-      {/* {active && <ERC20 setActive={setActive} createERC20={createERC20} />}
-      {transfer && (
+      {active && <ERC20 setActive={setActive} createERC20={createERC20} />}
+
+      {/*  {transfer && (
         <Transfer
           setTransfer={setTransfer}
           transferNativeToken={transferNativeToken}

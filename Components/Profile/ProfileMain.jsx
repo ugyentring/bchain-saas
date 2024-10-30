@@ -91,7 +91,7 @@ const ProfileMain = ({
       {open == "Dashboard" ? (
         <Table
           title="All cretaed ERC20 tokens"
-          tableData={getAllERC20TokensListed}
+          tableData={getAllERC20TokensListed || []}
         />
       ) : open == "Your Token" ? (
         <Table title="Your ERC20 Tokens" tableData={getUserERC20Tokens} />

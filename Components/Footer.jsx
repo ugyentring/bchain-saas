@@ -43,7 +43,7 @@ const Footer = () => {
                     <div class="footer-icons">
                       <ul>
                         {[1, 2, 3, 4, 5].map((social, i) => (
-                          <li>
+                          <li key={i}>
                             <a href="#">
                               <img src={`img/about/midea${i + 1}.png`} alt="" />
                             </a>
@@ -61,14 +61,14 @@ const Footer = () => {
                     <h4>Payment Options</h4>
                     <ul class="footer-list">
                       {coinList.map((coin, i) => (
-                        <li>
+                        <li key={i}>
                           <a href="#">{coin}</a>
                         </li>
                       ))}
                     </ul>
                     <ul class="footer-list">
                       {menuList.map((menu, i) => (
-                        <li>
+                        <li key={i}>
                           <a href={menu.link}>{menu.name}</a>
                         </li>
                       ))}
@@ -126,7 +126,7 @@ const Footer = () => {
                   <ul>
                     {["About", "Privacy Policy", "Terms & Conditions"].map(
                       (el, i) => (
-                        <li>
+                        <li key={i}>
                           <a href="#">{el}</a>
                         </li>
                       )

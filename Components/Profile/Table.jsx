@@ -2,19 +2,20 @@ import React from "react";
 
 const Table = ({ tableData, title }) => {
   return (
-    <div class="row">
-      <div class="col-xl-12 col-lg-12 col-md-12">
-        <div class="send-money-form transaction-log">
-          <div class="form-text">
-            <h4 class="form-top">
-              {" "}
-              {tableData.length == 0 ? "No Tokens Created" : `${title}`}
+    <div className="row">
+      <div className="col-xl-12 col-lg-12 col-md-12">
+        <div className="send-money-form transaction-log">
+          <div className="form-text">
+            <h4 className="form-top">
+              {tableData && tableData.length === 0
+                ? "No Tokens Created"
+                : title}
             </h4>
 
-            {tableData.length == 0 ? (
+            {tableData && tableData.length > 0 ? (
               ""
             ) : (
-              <div class="form-inner table-inner">
+              <div className="form-inner table-inner">
                 <table>
                   <thead>
                     <tr>
@@ -24,9 +25,10 @@ const Table = ({ tableData, title }) => {
                       <th>Name</th>
                       <th>Symbol</th>
                     </tr>
-
-                    <>
-                      {tableData.map((token, i) => (
+                  </thead>
+                  <tbody>
+                    {tableData &&
+                      tableData.map((token, i) => (
                         <tr key={i + 1}>
                           <td>{token.tokenCreatedDate}</td>
                           <td
@@ -38,7 +40,6 @@ const Table = ({ tableData, title }) => {
                           >
                             {token.tokenTransactionHash.slice(0, 15)}...
                           </td>
-
                           <td
                             onClick={() =>
                               navigator.clipboard.writeText(token.tokenAddress)
@@ -46,14 +47,12 @@ const Table = ({ tableData, title }) => {
                           >
                             {token.tokenAddress.slice(0, 15)}...
                           </td>
-
                           <td>{token.tokenSupply}</td>
                           <td>{token.tokenName}</td>
                           <td>{token.tokenSymbol}</td>
                         </tr>
                       ))}
-                    </>
-                  </thead>
+                  </tbody>
                 </table>
               </div>
             )}

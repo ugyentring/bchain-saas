@@ -114,7 +114,8 @@ export const StateProvider = ({ children }) => {
       }));
       setGetAllDonations(parsedDonations);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching initial data:", error);
+      alert("Failed to load initial data. Please try again later.");
     }
   };
 

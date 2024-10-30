@@ -61,7 +61,7 @@ export const StateProvider = ({ children }) => {
 
       // Get contract
       const lookUpContract = await connectingWithContract();
-      if (account === "0x8f81f30aAB61279cd48075C632288fDE95c6f964") {
+      if (account === "0x5e47Bd5138B25DaF2DBecbE78B0f6Fb5dAee8e7C") {
         const contractBalance = await lookUpContract.getBalance();
         setMainBalance(
           ethers.utils.formatUnits(contractBalance.toString(), "ether")

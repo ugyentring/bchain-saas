@@ -5,7 +5,7 @@ require("@nomicfoundation/hardhat-toolbox");
 const SEPOLIA_ALCHEMY =
   "https://eth-sepolia.g.alchemy.com/v2/dI9ngbkvn_XaMwlJ9D__-oxTD86U3Mnh";
 const PRIVATE_KEY =
-  "f84f28305451e17ee99be53d485d897a4aacf7fa3871c7717e8057a951242970";
+  "b8f78d5747712c87b33bd0dc36fda9852db4a47f1f5951b1c3e413b524d76616";
 module.exports = {
   solidity: "0.8.0",
   defaultNetwork: "sepolia",

@@ -32,6 +32,7 @@ const SideBar = ({ setActive, setOpen, open, address, setTransfer }) => {
             <ul>
               {menuList.map((el, i) => (
                 <li
+                  key={i}
                   onClick={() => setOpen(el.name)}
                   class={open === el.name ? "active" : ""}
                 >

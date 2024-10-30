@@ -12,9 +12,9 @@ const UserProfile = () => {
               <div class="breadcrumb-title">
                 <h2>User Profile</h2>
                 <div class="bread-come">
-                  <nav aria-label="breadcrumb">
+                  <nav aria-label="breadcrumb ">
                     <ol class="breadcrumb">
-                      <li class="breadcrumb-item">
+                      <li class="breadcrumb-items">
                         <a class="black-text" href="#">
                           Home
                         </a>

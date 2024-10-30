@@ -62,7 +62,7 @@ const create = () => {
           setTransfer={setTransfer}
         /> */}
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

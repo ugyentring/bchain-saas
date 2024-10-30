@@ -44,7 +44,7 @@ const create = () => {
 
       <main>
         <UserProfile />
-        {/* <Profile
+        <Profile
           getAllERC20TokensListed={getAllERC20TokensListed}
           getAllERC20Tokens={getAllERC20Tokens}
           getAllDonations={getAllDonations}
@@ -60,7 +60,7 @@ const create = () => {
           transferERC20={transferERC20}
           setActive={setActive}
           setTransfer={setTransfer}
-        /> */}
+        />
       </main>
       <Footer />
     </div>

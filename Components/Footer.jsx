@@ -45,7 +45,7 @@ const Footer = () => {
                         {[1, 2, 3, 4, 5].map((social, i) => (
                           <li>
                             <a href="#">
-                              <img src={`img/about/medea${i + 1}.png`} alt="" />
+                              <img src={`img/about/midea${i + 1}.png`} alt="" />
                             </a>
                           </li>
                         ))}

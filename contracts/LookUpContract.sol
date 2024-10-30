@@ -167,8 +167,4 @@ contract LookUpContract {
         } 
         return items;
     }
-
-
-
-
 }

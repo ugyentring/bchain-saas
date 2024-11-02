@@ -1,3 +1,5 @@
 ERC20Generator deployed to: 0xca8979E68C94f21762E8a5dea214d38Fd5c1c3bC
 
 LookUpContract deployed to: 0xF723f3688ff53A5924665D83e211489457fFa23B
+
+i am doing fine

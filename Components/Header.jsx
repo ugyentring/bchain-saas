@@ -20,28 +20,28 @@ const Header = () => {
     },
   ];
   return (
-    <header class="header-one">
-      <div class="header-menu-area header-area">
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-2 col-lg-2 col-md-3 d-flex align-items-center">
-              <div class="logo">
+    <header className="header-one">
+      <div className="header-menu-area header-area">
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-2 col-lg-2 col-md-3 d-flex align-items-center">
+              <div className="logo">
                 <a href="/">
                   <img src="/img/logo/logo2.png" alt="logo" />
                 </a>
               </div>
             </div>
-            <div class="col-xl-10 col-lg-10 col-md-9">
-              <div class="header-right">
-                <a href="#" class="top-btn coin-btn">
+            <div className="col-xl-10 col-lg-10 col-md-9">
+              <div className="header-right">
+                <a href="#" className="top-btn coin-btn">
                   Buy Token
                 </a>
               </div>
-              <div class="header_menu f-right">
+              <div className="header_menu f-right">
                 <nav id="mobile-menu">
-                  <ul class="main-menu">
+                  <ul className="main-menu">
                     {menuList.map((menu, i) => (
-                      <li class="result" key={i + 1}>
+                      <li className="result" key={i + 1}>
                         <a href={menu.link}>{menu.name}</a>
                       </li>
                     ))}

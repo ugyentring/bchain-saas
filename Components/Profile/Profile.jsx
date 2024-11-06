@@ -21,9 +21,9 @@ const Profile = ({
 }) => {
 const [open, setOpen] = useState("Dashboard");
 
-  return <div class="dashboard-area bg-color area-padding-3">
-    <div class="container">
-      <div class="row">
+  return <div className="dashboard-area bg-color area-padding-3">
+    <div className="container">
+      <div className="row">
         <SideBar 
         address={address}
         setOpen={setOpen}

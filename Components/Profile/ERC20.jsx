@@ -13,63 +13,89 @@ const ERC20 = ({ setActive, createERC20 }) => {
   };
 
   return (
-    <div class="login-area area-padding fix">
-      <div class="login-overlay"></div>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-xl-6 col-lg-6 col-md-8">
-            <div class="login-form signup-form">
-              <span onClick={() => setActive(false)}>
+    <div className="login-area area-padding fix">
+      <div className="login-overlay"></div>
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-xl-6 col-lg-6 col-md-8">
+            <div className="login-form signup-form p-4 shadow rounded">
+              <span
+                onClick={() => setActive(false)}
+                className="close-btn"
+                style={{
+                  display: "inline-block",
+                  padding: "8px",
+                  cursor: "pointer",
+                  fontSize: "20px",
+                  color: "#333",
+                }}
+              >
                 <AiOutlineClose />
               </span>
-              <h4 class="login-title text-center">Create ERC20 Token</h4>
+              <h4 className="login-title text-center mb-4">Create ERC20 Token</h4>
 
-              <div id="contactForm" class="login-form">
+              <div id="contactForm" className="login-form">
                 <input
                   type="text"
                   id="name"
-                  class="form-control"
-                  placeholder="Name"
+                  className="form-control mb-3 p-2"
+                  placeholder="Token Name"
                   required
                   onChange={(e) => handleTokenInfo("name", e)}
+                  style={{
+                    border: "1px solid #ddd",
+                    borderRadius: "4px",
+                  }}
                 />
 
                 <input
                   type="text"
-                  id="email"
-                  class="form-control"
-                  placeholder="Symbol"
+                  id="symbol"
+                  className="form-control mb-3 p-2"
+                  placeholder="Token Symbol"
                   required
                   onChange={(e) => handleTokenInfo("symbol", e)}
+                  style={{
+                    border: "1px solid #ddd",
+                    borderRadius: "4px",
+                  }}
                 />
 
                 <input
                   type="number"
-                  id="msg_subject"
-                  class="form-control"
-                  placeholder="total supply"
+                  id="supply"
+                  className="form-control mb-3 p-2"
+                  placeholder="Total Supply"
                   required
                   onChange={(e) => handleTokenInfo("supply", e)}
+                  style={{
+                    border: "1px solid #ddd",
+                    borderRadius: "4px",
+                  }}
                 />
 
                 <button
                   onClick={() => createERC20(token)}
                   id="submit"
                   type="submit"
-                  class="slide-btn color-btn login-btn"
+                  className="btn btn-primary w-100 py-2 mt-3"
+                  style={{
+                    borderRadius: "4px",
+                    backgroundColor: "#007bff",
+                    color: "#fff",
+                  }}
                 >
-                  Create
+                  Create Token
                 </button>
-                <div id="msgSubmit" class="h3 text-center hidden"></div>
-                <div class="clearfix"></div>
-                <div class="clear"></div>
-                <div class="separator">
-                  <span>Create You ERC20 Token</span>
+
+                <div id="msgSubmit" className="h3 text-center hidden mt-3"></div>
+                <div className="separator text-center mt-4">
+                  <span>Create Your ERC20 Token</span>
                 </div>
 
-                <div class="sign-icon">
-                  <div class="acc-not">
-                    with minimum fee of <a>0.01 Sepolia</a>
+                <div className="sign-icon text-center mt-2">
+                  <div className="acc-not">
+                    with a minimum fee of <a href="#">0.01 Sepolia</a>
                   </div>
                 </div>
               </div>

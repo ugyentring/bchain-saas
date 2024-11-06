@@ -3,27 +3,27 @@ import { BsBoxArrowRight } from "react-icons/bs";
 
 const UserProfile = () => {
   return (
-    <div class="page-area bread-pd">
-      <div class="breadcumb-overlay"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-12">
-            <div class="bread-bg">
-              <div class="breadcrumb-title">
+    <div className="page-area bread-pd">
+      <div className="breadcumb-overlay"></div>
+      <div className="container">
+        <div className="row">
+          <div className="col-xl-12">
+            <div className="bread-bg">
+              <div className="breadcrumb-title">
                 <h2>User Profile</h2>
-                <div class="bread-come">
+                <div className="bread-come">
                   <nav aria-label="breadcrumb ">
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-items">
-                        <a class="black-text" href="#">
+                    <ol className="breadcrumb">
+                      <li className="breadcrumb-items">
+                        <a className="black-text" href="#">
                           Home
                         </a>
                         <span className="new_profile_space">
                           <BsBoxArrowRight />
                         </span>
                       </li>
-                      <li class="breadcrumb-items" aria-current="page">
-                        <a class="black-text" href="#">
+                      <li className="breadcrumb-items" aria-current="page">
+                        <a className="black-text" href="#">
                           User Profile
                         </a>
                       </li>

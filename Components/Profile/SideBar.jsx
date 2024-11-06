@@ -15,30 +15,30 @@ const SideBar = ({ setActive, setOpen, open, address, setTransfer }) => {
   ];
 
   return (
-    <div class="col-xl-3  col-lg-3 col-md-4">
-      <aside class="sidebar">
-        <div class="dashboard-side">
-          <div class="dashboard-head">
-            <div class="dashboard-profile">
+    <div className="col-xl-3  col-lg-3 col-md-4">
+      <aside className="sidebar">
+        <div className="dashboard-side">
+          <div className="dashboard-head">
+            <div className="dashboard-profile">
               <img src="img/about/profile.png" alt="profile" />
-              <div class="profile-content">
-                <span class="pro-name">Ugyen Tshering</span>
-                <span class="pro-number">{address.slice(0.15)}...</span>
+              <div className="profile-content">
+                <span className="pro-name">Ugyen Tshering</span>
+                <span className="pro-number">{address.slice(0.15)}...</span>
               </div>
             </div>
           </div>
 
-          <div class="dashboard-menu">
+          <div className="dashboard-menu">
             <ul>
               {menuList.map((el, i) => (
                 <li
                   key={i}
                   onClick={() => setOpen(el.name)}
-                  class={open === el.name ? "active" : ""}
+                  className={open === el.name ? "active" : ""}
                 >
                   <a>
                     <BsBoxArrowRight />
-                    <span class="new_space"></span>
+                    <span className="new_space"></span>
                     {el.name}
                   </a>
                 </li>
@@ -47,7 +47,7 @@ const SideBar = ({ setActive, setOpen, open, address, setTransfer }) => {
               <li onClick={() => setActive(true)}>
                 <a href="#">
                   <BsBoxArrowRight />
-                  <span class="new_space"></span>
+                  <span className="new_space"></span>
                   Create Token
                 </a>
               </li>
@@ -55,7 +55,7 @@ const SideBar = ({ setActive, setOpen, open, address, setTransfer }) => {
               <li onClick={() => setTransfer(true)}>
                 <a href="#">
                   <BsBoxArrowRight />
-                  <span class="new_space"></span>
+                  <span className="new_space"></span>
                   Transfer Token
                 </a>
               </li>

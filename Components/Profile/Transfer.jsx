@@ -12,22 +12,22 @@ const Transfer = ({ setTransfer, transferNativeToken }) => {
   };
 
   return (
-    <div class="login-area area-padding fix">
-      <div class="login-overlay"></div>
-      <div class="container">
-        <div class="row justify-content-center text-center">
-          <div class="col-xl-6 col-lg-6 col-md-8">
-            <div class="login-form signup-form">
+    <div className="login-area area-padding fix">
+      <div className="login-overlay"></div>
+      <div className="container">
+        <div className="row justify-content-center text-center">
+          <div className="col-xl-6 col-lg-6 col-md-8">
+            <div className="login-form signup-form">
               <span onClick={() => setTransfer(false)}>
                 <AiOutlineClose />
               </span>
-              <h4 class="login-title text-center">Transfer Token</h4>
+              <h4 className="login-title text-center">Transfer Token</h4>
 
-              <div id="contactForm" class="login-form">
+              <div id="contactForm" className="login-form">
                 <input
                   type="text"
                   id="name"
-                  class="form-control"
+                  className="form-control"
                   placeholder="address"
                   required
                   onChange={(e) => handleTokenInfo("address", e)}
@@ -35,7 +35,7 @@ const Transfer = ({ setTransfer, transferNativeToken }) => {
                 <input
                   type="text"
                   id="name"
-                  class="form-control"
+                  className="form-control"
                   placeholder="amount"
                   required
                   onChange={(e) => handleTokenInfo("tokenNo", e)}
@@ -45,14 +45,14 @@ const Transfer = ({ setTransfer, transferNativeToken }) => {
                   onClick={() => transferNativeToken(token)}
                   type="submit"
                   id="submit"
-                  class="slide-btn color-btn login-btn"
+                  className="slide-btn color-btn login-btn"
                 >
                   Transfer Token
                 </button>
-                <div id="msgSubmit" class="h3 text-center hidden"></div>
-                <div class="clearfix"></div>
-                <div class="clear"></div>
-                <div class="separator text-center">
+                <div id="msgSubmit" className="h3 text-center hidden"></div>
+                <div className="clearfix"></div>
+                <div className="clear"></div>
+                <div className="separator text-center">
                   <span>Create Your own Token</span>
                 </div>
               </div>

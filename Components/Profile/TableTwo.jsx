@@ -2,11 +2,11 @@ import React from "react";
 
 const TableTwo = ({ tableData, title }) => {
   return (
-    <div class="row">
-      <div class="col-xl-12 col-lg-12 col-md-12">
-        <div class="send-money-form transaction-log">
-          <div class="form-text">
-            <h4 class="form-top">
+    <div className="row">
+      <div className="col-xl-12 col-lg-12 col-md-12">
+        <div className="send-money-form transaction-log">
+          <div className="form-text">
+            <h4 className="form-top">
               {" "}
               {tableData.length == 0 ? "No Donations given" : `${title}`}{" "}
             </h4>
@@ -14,7 +14,7 @@ const TableTwo = ({ tableData, title }) => {
             {tableData.length == 0 ? (
               ""
             ) : (
-              <div class="form-inner table-inner">
+              <div className="form-inner table-inner">
                 <table>
                   <thead>
                     <tr>

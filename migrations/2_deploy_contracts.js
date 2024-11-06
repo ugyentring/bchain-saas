@@ -14,5 +14,5 @@ module.exports = async function (deployer) {
   //deploy LookUpContract
   await deployer.deploy(LookUpContract);
   const lookUpContract = await LookUpContract.deployed();
-  console.log("LookUpContract deployed to:", lookUpContract.address);
+  console.log("LookUpContract deployed to:",lookUpContract.address);
 };

@@ -9718,12 +9718,12 @@
         }
       },
       "links": {},
-      "address": "0x8C569B281fE453aC9a04acE0F69Cdff01376c375",
-      "transactionHash": "0x4824ba67286a04c2ad6844a8247c9afb90592ea9796d14927f4643440707b447"
+      "address": "0x3C82051e8121E6D8C949D32ECCa195924565041b",
+      "transactionHash": "0xb55aa0e89000247e0d2d9854adcf5afb4a8ee14f2b1a1211a303663e971911de"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-11-06T19:03:48.359Z",
+  "updatedAt": "2024-11-06T22:04:31.385Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

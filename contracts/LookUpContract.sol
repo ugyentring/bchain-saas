@@ -20,7 +20,7 @@ contract LookUpContract {
     }
 
     address payable contractOwner =
-        payable(0xdFB8e66F7331F2c2D080b62D5505043aF01233d2);
+        payable(0x93cE56E359DFE0e0452816CA742853F96F2Ee0bA);
 
     uint256 public listingPrice = 0.025 ether;
 

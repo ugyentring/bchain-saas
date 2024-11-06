@@ -43,7 +43,7 @@ const ProfileMain = ({
     },
   ];
 
-  const contractOwner = "0xdFB8e66F7331F2c2D080b62D5505043aF01233d2"
+  const contractOwner = "0x93cE56E359DFE0e0452816CA742853F96F2Ee0bA"
 
   return (
     <div className="col-xl-9 col-lg-9 col-md-8">

@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 contract LookUpContract {
     struct ERC20Token {
-        uint256 tokenId;
+        uint256 tokenID;
         address owner;
         string tokenSupply;
         string tokenName;
@@ -30,7 +30,7 @@ contract LookUpContract {
     uint256 public _tokenIndex;
     uint256 public _donationIndex;
 
-    event DonationReceived(address donor, uint256 amount);
+    event DonationReceived(address indexed donor, uint256 amount);
     event ERC20TokenListed(
         uint256 indexed id,
         address indexed owner,
@@ -70,7 +70,7 @@ contract LookUpContract {
         uint256 _tokenId = _tokenIndex;
         ERC20Token storage erc20Token = erc20Tokens[_tokenId];
 
-        erc20Token.tokenId = _tokenId;
+        erc20Token.tokenID = _tokenId;
         erc20Token.owner = _owner;
         erc20Token.tokenSupply = _tokenSupply;
         erc20Token.tokenName = _tokenName;
@@ -127,7 +127,7 @@ contract LookUpContract {
         ERC20Token memory erc20Token = erc20Tokens[_tokenId];
 
         return (
-            erc20Token.tokenId,
+            erc20Token.tokenID,
             erc20Token.owner,
             erc20Token.tokenName,
             erc20Token.tokenSupply,
@@ -164,7 +164,7 @@ contract LookUpContract {
         return items;
     }
 
-    function getERC20TokenListingpRICE() public view returns (uint256) {
+    function getERC20TokenListingPrice() public view returns (uint256) {
         return listingPrice;
     }
 
@@ -184,11 +184,12 @@ contract LookUpContract {
     }
 
     function getContractBalance() external view onlyOwner returns (uint256) {
-        return address(this).balance;
+        uint256 balance = address(this).balance;
+        return balance;
     }
 
     function donate() external payable {
-        require(msg.value >= 0, "Donate amount should be greater than 0");
+        require(msg.value >= 0, "Donation amount should be greater than 0");
 
         _donationIndex++;
 
@@ -202,7 +203,7 @@ contract LookUpContract {
         emit DonationReceived(msg.sender, msg.value);
     }
 
-    function getDonations() external view returns (Donation[] memory) {
+    function getAllDonation() external view returns (Donation[] memory) {
         uint256 itemCount = _donationIndex;
         uint256 currentIndex = 0;
         Donation[] memory items = new Donation[](itemCount);

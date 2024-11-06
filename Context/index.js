@@ -268,6 +268,7 @@ export const StateProvider = ({ children }) => {
         getAllERC20Tokens,
         getAllERC20TokensListed,
         mainBalance,
+        connectWallet
       }}
     >
       {children}

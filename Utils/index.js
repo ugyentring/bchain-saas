@@ -14,8 +14,7 @@ export const CheckIfWalletIsConnected = async () => {
 
     const accounts = await window.ethereum.request({ method: "eth_accounts" });
 
-    const firstAccount = accounts[0];
-    return firstAccount;
+    return accounts.length ? accounts[0] : null;
   } catch (error) {
     console.log(error);
     throw new Error("No ethereum object");
@@ -39,7 +38,7 @@ export const connectWallet = async () => {
 };
 
 const fetchContract = (signerOrProvider) => {
-  new ethers.Contract(
+  return new ethers.Contract(
     LookUpContarct_ADDRESS,
     LookUpContarct_ABI,
     signerOrProvider
@@ -72,7 +71,7 @@ export const getBalance = async () => {
 };
 
 const fetchTokenContract = (signerOrProvider) => {
-  new ethers.Contract(
+  return new ethers.Contract(
     ERC20Generator_ADDRESS,
     ERC20Generator_ABI,
     signerOrProvider

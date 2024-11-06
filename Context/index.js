@@ -14,7 +14,7 @@ import { ERC20Generator_ABI, ERC20Generator_BYTECODE } from "./constants";
 
 export const StateContext = createContext();
 
-export const StateProvider = ({ children }) => {
+export const StateContextProvider = ({ children }) => {
   const [address, setAddress] = useState("");
   const [getAllERC20TokensListed, setGetAllERC20TokensListed] = useState([]);
   const [getAllERC20Tokens, setGetAllERC20Tokens] = useState([]);
@@ -27,15 +27,15 @@ export const StateProvider = ({ children }) => {
   // Fetch initial data
   const fetchInitialData = async () => {
     try {
-      // Get user account
+      //get user account
       const account = await CheckIfWalletIsConnected();
+
+      //get user balance
+      const balance = await getBalance();
+      setBalance(ethers.utils.formatEther(balance.toString()));
       setAddress(account);
 
-      // Get user balance
-      const userBalance = await getBalance();
-      setBalance(ethers.utils.formatEther(userBalance.toString()));
-
-      // Get native token balance
+      //get native token balance
       const nativeContract = await connectingNativeTokenContract();
       if (account) {
         const nativeBalance = await nativeContract.balanceOf(account);
@@ -57,28 +57,31 @@ export const StateProvider = ({ children }) => {
           ),
         };
         setNativeToken(nativeToken);
+        console.log(nativeContract)
       }
 
       // Get contract
       const lookUpContract = await connectingWithContract();
-      if (account === "0x93cE56E359DFE0e0452816CA742853F96F2Ee0bA") {
-        const contractBalance = await lookUpContract.getBalance();
-        setMainBalance(
-          ethers.utils.formatUnits(contractBalance.toString(), "ether")
-        );
+      if (account == "0x93cE56E359DFE0e0452816CA742853F96F2Ee0bA") {
+        const contractBalance = await lookUpContract.getContractBalance();
+        const mainBal = ethers.utils.formatUnits(contractBalance.toString(), "ether");
+
+        console.log(mainBal)
+        setMainBalance(mainBal)
       }
 
       // Get all ERC20 tokens
-      const getAllERC20TokenListed = await lookUpContract.getAllERC20Tokens();
-      const parsedToken = getAllERC20TokenListed.map((ERC20token) => ({
-        tokenId: ERC20token.tokenId.toNumber(),
-        owner: ERC20token.owner,
-        tokenSupply: ERC20token.tokenSupply,
-        tokenName: ERC20token.tokenName,
-        tokenSymbol: ERC20token.tokenSymbol,
-        tokenAddress: ERC20token.tokenAddress,
-        tokenTransactionHash: ERC20token.tokenTransactionHash,
-        tokenCreatedDate: ERC20token.tokenCreatedDate,
+      const getAllERC20TokenListed = await lookUpContract.getERC20TokenListed();
+
+      const parsedToken = getAllERC20TokenListed.map((ERC20Token, i) => ({
+        tokenId: ERC20Token.tokenID.toNumber(),
+        owner: ERC20Token.owner,
+        tokenSupply: ERC20Token.tokenSupply,
+        tokenName: ERC20Token.tokenName,
+        tokenSymbol: ERC20Token.tokenSymbol,
+        tokenAddress: ERC20Token.tokenAddress,
+        tokenTransactionHash: ERC20Token.tokenTransactionHash,
+        tokenCreatedDate: ERC20Token.tokenCreatedDate,
       }));
       setGetAllERC20TokensListed(parsedToken);
 
@@ -87,27 +90,27 @@ export const StateProvider = ({ children }) => {
         const getUserERC20Tokens = await lookUpContract.getUserERC20Tokens(
           account
         );
-        const parsedUserERC20Tokens = getUserERC20Tokens.map((ERC20token) => ({
-          tokenId: ERC20token.tokenId.toNumber(),
-          owner: ERC20token.owner,
-          tokenSupply: ERC20token.tokenSupply,
-          tokenName: ERC20token.tokenName,
-          tokenSymbol: ERC20token.tokenSymbol,
-          tokenAddress: ERC20token.tokenAddress,
-          tokenTransactionHash: ERC20token.tokenTransactionHash,
-          tokenCreatedDate: ERC20token.tokenCreatedDate,
+        const parsedUserERC20Tokens = getUserERC20Tokens.map((ERC20Token, i) => ({
+          tokenId: ERC20Token.tokenID.toNumber(),
+          owner: ERC20Token.owner,
+          tokenSupply: ERC20Token.tokenSupply,
+          tokenName: ERC20Token.tokenName,
+          tokenSymbol: ERC20Token.tokenSymbol,
+          tokenAddress: ERC20Token.tokenAddress,
+          tokenTransactionHash: ERC20Token.tokenTransactionHash,
+          tokenCreatedDate: ERC20Token.tokenCreatedDate,
         }));
         setGetAllERC20Tokens(parsedUserERC20Tokens);
       }
 
       // Listing price
-      const listingPrice = await lookUpContract.getListingPrice();
-      const price = ethers.utils.formatUnits(listingPrice.toString(), "ether");
+      const listingPrice = await lookUpContract.getERC20TokenListingPrice();
+      const price = ethers.utils.formatEther(listingPrice.toString());
       setFee(price);
 
       // Get all donations
-      const getAllDonations = await lookUpContract.getAllDonations();
-      const parsedDonations = getAllDonations.map((donation) => ({
+      const getAllDonations = await lookUpContract.getAllDonation();
+      const parsedDonations = getAllDonations.map((donation, i) => ({
         donationID: donation.donationID.toNumber(),
         donor: donation.donor,
         fund: ethers.utils.formatUnits(donation.fund.toString(), "ether"),
@@ -133,16 +136,16 @@ export const StateProvider = ({ children }) => {
         signer
       );
       const totalSupply = Number(supply);
-      const _initialSupply = ethers.utils.parseUnits(
-        totalSupply.toString(),
-        "ether"
+      const _initialSupply = ethers.utils.parseEther(
+        totalSupply.toString()
       );
 
-      const contract = await factory.deploy(_initialSupply, name, symbol);
-      await contract.deployed();
+      let contract = await factory.deploy(_initialSupply, name, symbol);
+      const transaction = await contract.deployed();
 
       const today = Date.now();
-      const _tokenCreatedDate = new Date(today).toLocaleDateString("en-US");
+      let date = new Date(today);
+      const _tokenCreatedDate = date.toLocaleDateString("en-US");
 
       if (contract.address) {
         await _createERC20Token(
@@ -155,6 +158,8 @@ export const StateProvider = ({ children }) => {
           _tokenCreatedDate
         );
       }
+      console.log(contract.address)
+      console.log(contract.deployTransaction.hash);
     } catch (error) {
       console.log(error);
     }
@@ -187,6 +192,7 @@ export const StateProvider = ({ children }) => {
       );
 
       await transaction.wait();
+      console.log(transaction)
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -196,11 +202,16 @@ export const StateProvider = ({ children }) => {
   const createERC20 = async (token) => {
     const { name, symbol, supply } = token;
 
+    console.log(name, symbol, Number(supply))
+
     try {
       if (!name || !symbol || !supply) {
         console.log(token);
       } else {
+        console.log(name, symbol, supply)
         const account = await CheckIfWalletIsConnected();
+        console.log(account)
+
         const web3Modal = new Web3Modal();
         const connection = await web3Modal.connect();
         const provider = new ethers.providers.Web3Provider(connection);
@@ -217,7 +228,9 @@ export const StateProvider = ({ children }) => {
     try {
       const contract = await connectingWithContract();
       const withdraw = await contract.withdraw();
+
       await withdraw.wait();
+      console.log(withdraw)
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -227,12 +240,14 @@ export const StateProvider = ({ children }) => {
   // Donation fund
   const donationFund = async () => {
     try {
-      const donationAmount = ethers.utils.parseEther("0.1");
+      const donationAmount = ethers.utils.parseEther("1");
       const contract = await connectingWithContract();
       const donate = await contract.donate({
         value: donationAmount.toString(),
       });
+
       await donate.wait();
+      console.log(donate)
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -243,10 +258,14 @@ export const StateProvider = ({ children }) => {
   const transferNativeToken = async (token) => {
     try {
       const { address, tokenNo } = token;
+      console.log(address, tokenNo);
+
       const transferAmount = ethers.utils.parseEther(tokenNo);
       const contract = await connectingNativeTokenContract();
       const transaction = await contract.transfer(address, transferAmount);
+
       await transaction.wait();
+      console.log(transaction)
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -268,7 +287,8 @@ export const StateProvider = ({ children }) => {
         getAllERC20Tokens,
         getAllERC20TokensListed,
         mainBalance,
-        connectWallet
+        connectWallet,
+        fetchInitialData
       }}
     >
       {children}

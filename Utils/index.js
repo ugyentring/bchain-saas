@@ -10,7 +10,7 @@ import {
 
 export const CheckIfWalletIsConnected = async () => {
   try {
-    if (!window.ethereum) return alert("Please install metamask");
+    if (!window.ethereum) return console.log("Please install metamask");
 
     const accounts = await window.ethereum.request({ method: "eth_accounts" });
 
@@ -37,13 +37,13 @@ export const connectWallet = async () => {
   }
 };
 
-const fetchContract = (signerOrProvider) => {
-  return new ethers.Contract(
+const fetchContract = (signerOrProvider) =>
+  new ethers.Contract(
     LookUpContarct_ADDRESS,
     LookUpContarct_ABI,
     signerOrProvider
   );
-};
+
 
 export const connectingWithContract = async () => {
   try {
@@ -70,13 +70,13 @@ export const getBalance = async () => {
   }
 };
 
-const fetchTokenContract = (signerOrProvider) => {
-  return new ethers.Contract(
+const fetchTokenContract = (signerOrProvider) =>
+  new ethers.Contract(
     ERC20Generator_ADDRESS,
     ERC20Generator_ABI,
     signerOrProvider
   );
-};
+
 
 export const connectingNativeTokenContract = async () => {
   try {

@@ -25,7 +25,7 @@ const create = () => {
     nativeToken,
     address,
     getUserERC20Tokens,
-    widthdrawFund,
+    withdrawFund,
     donationFund,
     transferNativeToken,
     transferERC20,
@@ -55,7 +55,7 @@ const create = () => {
           nativeToken={nativeToken}
           address={address}
           getUserERC20Tokens={getUserERC20Tokens}
-          widthdrawFund={widthdrawFund}
+          withdrawFund={withdrawFund}
           donationFund={donationFund}
           transferERC20={transferERC20}
           setActive={setActive}

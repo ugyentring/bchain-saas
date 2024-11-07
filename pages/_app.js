@@ -1,25 +1,25 @@
 import "../styles/globals.css";
+import Head from "next/head";
+
 import { StateContextProvider } from "../Context/index.js";
-import Script from 'next/script';
 
 export default function App({ Component, pageProps }) {
   return (
     <>
-    <StateContextProvider>
-      <Component {...pageProps} />
-
-      {/* Load JavaScript files conditionally if needed */}
-      <Script src="js/vendor/modernizr-3.5.0.min.js" strategy="beforeInteractive" />
-      <Script src="js/vendor/jquery-1.12.4.min.js" strategy="beforeInteractive" />
-      <Script src="js/popper.min.js" strategy="lazyOnload" />
-      <Script src="js/bootstrap.min.js" strategy="lazyOnload" />
-      <Script src="js/owl.carousal.min.js" strategy="lazyOnload" />
-      <Script src="js/jquery.nice-select.min.js" strategy="lazyOnload" />
-      <Script src="js/jquery.meanmenu.js" strategy="lazyOnload" />
-      <Script src="js/wow.min.js" strategy="lazyOnload" />
-      <Script src="js/main.js" strategy="lazyOnload" />
-      <Script src="js/plugins.js" strategy="lazyOnload" />
+      <StateContextProvider>
+        <Component {...pageProps} />
       </StateContextProvider>
-      </>
+
+      <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+      <script src="js/vendor/jquery-1.12.4.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/owl.carousal.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/jquery.nice-select.min.js"></script>
+      <script src="js/jquery.meanmenu.js"></script>
+      <script src="js/wow.min.js"></script>
+      <script src="js/plugins.js"></script>
+      <script src="js/main.js"></script>
+    </>
   );
 }

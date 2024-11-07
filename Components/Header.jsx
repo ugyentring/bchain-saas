@@ -39,7 +39,7 @@ const Header = () => {
               </div>
               <div className="header_menu f-right">
                 <nav id="mobile-menu">
-                  <ul className="new-nav-class main-menu">
+                  <ul className="main-menu">
                     {menuList.map((menu, i) => (
                       <li className="result" key={i + 1}>
                         <a href={menu.link}>{menu.name}</a>

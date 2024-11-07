@@ -13,7 +13,7 @@ const Profile = ({
   fee,
   mainBalance,
   nativeToken,
-  widthdrawFund,
+  withdrawFund,
   donationFund,
   createERC20,
   setTransfer
@@ -37,7 +37,7 @@ const [open, setOpen] = useState("Dashboard");
         mainBalance={mainBalance}
         getAllDonations={getAllDonations}
         donationFund={donationFund}
-        widthdrawFund={widthdrawFund}
+        withdrawFund={withdrawFund}
         balance={balance}
         createERC20={createERC20}
         setOpen={setOpen}

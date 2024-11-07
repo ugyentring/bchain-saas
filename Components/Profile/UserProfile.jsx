@@ -6,7 +6,7 @@ const UserProfile = () => {
     <div className="page-area bread-pd">
       <div className="breadcumb-overlay"></div>
       <div className="container">
-        <div className="row">
+        <div className="row"> 
           <div className="col-xl-12">
             <div className="bread-bg">
               <div className="breadcrumb-title">

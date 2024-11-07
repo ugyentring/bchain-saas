@@ -34,7 +34,7 @@ const SideBar = ({ setActive, setOpen, open, address, setTransfer }) => {
                 <li
                   key={i}
                   onClick={() => setOpen(el.name)}
-                  className={open === el.name ? "active" : ""}
+                  className={open == el.name ? "active" : ""}
                 >
                   <a>
                     <BsBoxArrowRight />

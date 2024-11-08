@@ -15,7 +15,7 @@ const ProfileMain = ({
   nativeToken,
   address,
   getUserERC20Tokens,
-  widthdrawFund,
+  withdrawFund,
   donationFund,
 }) => {
   const details = [
@@ -28,8 +28,13 @@ const ProfileMain = ({
       value: `#${getAllERC20TokensListed?.length || 0}`,
     },
     {
-      title: "listing Fee",
+      title: "Listing Fee",
       value: `${fee} Sepolia`,
+    },
+    {
+      title: "Doners",
+      value: `#${getAllDonations?.length || 0}`
+
     },
     {
       title: `${nativeToken?.symbol} Token`,
@@ -43,7 +48,7 @@ const ProfileMain = ({
     },
   ];
 
-  const contractOwner = "0x93cE56E359DFE0e0452816CA742853F96F2Ee0bA"
+  const contractOwner = "0x93cE56E359DFE0e0452816CA742853F96F2Ee0bA";
 
   return (
     <div className="col-xl-9 col-lg-9 col-md-8">
@@ -53,7 +58,7 @@ const ProfileMain = ({
             <div className="user-balance">
               <span>Your balance</span>
               <div className="main-bal">
-                {balance ? balance.slice(1, 7) : "N/A"} Sepolia
+                {balance?.slice(1, 7)} Sepolia
               </div>
             </div>
             <div className="userboard-btn">
@@ -62,7 +67,7 @@ const ProfileMain = ({
               </a>
 
               {address == contractOwner && (
-                <a onClick={() => widthdrawFund()} className="user-btn color-btn">
+                <a onClick={() => withdrawFund()} className="user-btn color-btn">
                   Withdraw Funds
                 </a>
               )}
@@ -91,12 +96,12 @@ const ProfileMain = ({
       {open == "Dashboard" ? (
         <Table
           title="All cretaed ERC20 tokens"
-          tableData={getAllERC20TokensListed || []}
+          tableData={getAllERC20TokensListed}
         />
       ) : open == "Your Token" ? (
-        <Table title="Your ERC20 Tokens" tableData={getUserERC20Tokens} />
+        <Table title="Your Tokens" tableData={getUserERC20Tokens} />
       ) : open == "Donation" ? (
-        <TableTwo title="All your donation" tableData={getAllDonations} />
+        <TableTwo title="All your donations" tableData={getAllDonations} />
       ) : (
         ""
       )}

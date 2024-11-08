@@ -23,7 +23,7 @@ const Transfer = ({ setTransfer, transferNativeToken }) => {
               </span>
               <h4 className="login-title text-center">Transfer Token</h4>
 
-              <div id="contactForm" className="login-form">
+              <div id="contactForm" className="log-form">
                 <input
                   type="text"
                   id="name"

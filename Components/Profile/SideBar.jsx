@@ -23,7 +23,7 @@ const SideBar = ({ setActive, setOpen, open, address, setTransfer }) => {
               <img src="img/about/profile.png" alt="profile" />
               <div className="profile-content">
                 <span className="pro-name">Ugyen Tshering</span>
-                <span className="pro-number">{address.slice(0.15)}...</span>
+                <span className="pro-number">{address.slice(0,15)}...</span>
               </div>
             </div>
           </div>

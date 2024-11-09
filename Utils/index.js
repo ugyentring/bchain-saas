@@ -2,8 +2,8 @@ import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 
 import {
-  LookUpContarct_ABI,
-  LookUpContarct_ADDRESS,
+  LookUpContract_ABI,
+  LookUpContract_ADDRESS,
   ERC20Generator_ADDRESS,
   ERC20Generator_ABI,
 } from "../Context/constants";
@@ -39,8 +39,8 @@ export const connectWallet = async () => {
 
 const fetchContract = (signerOrProvider) =>
   new ethers.Contract(
-    LookUpContarct_ADDRESS,
-    LookUpContarct_ABI,
+    LookUpContract_ADDRESS,
+    LookUpContract_ABI,
     signerOrProvider
   );
 
